@@ -1,4 +1,4 @@
-/** act done or relocate
+/** action done or relocate
  */
 public class ActionCommand  {
     //

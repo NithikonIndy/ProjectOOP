@@ -1,4 +1,4 @@
-/** chcek near by | opponent view space 
+/** check nearby  function | opponent expression view space
  */
 public class InfoExpression {
 }
