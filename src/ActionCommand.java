@@ -1,5 +1,5 @@
 /** action done or relocate
  */
-public class ActionCommand  {
+public class ActionCommand implements Command {
 
 }

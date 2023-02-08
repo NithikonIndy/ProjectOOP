@@ -1,4 +1,4 @@
-/** Interest rates deposit of region and calculation
+/** calculation
  */
 public class Expression {
     //

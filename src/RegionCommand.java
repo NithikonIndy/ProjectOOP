@@ -1,5 +1,5 @@
-/** invest region | collect region
+/** invest region | collect region and Interest rates deposit of region
  */
-public class RegionCommand {
+public class RegionCommand implements Command {
     //
 }
