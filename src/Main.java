@@ -6,9 +6,13 @@ public class Main {
 
         }
         Map map=new Map();
-        map.createmap();
-        Player1 p=new Player1();
-        p.createplayer();
-        p.show();
+        map.Createmap();
+        Player p1=new Player();
+        p1.createplayer();
+        p1.show();
+        p1.Relocate(10,10);
+        p1.show();
     }
+
+
 }

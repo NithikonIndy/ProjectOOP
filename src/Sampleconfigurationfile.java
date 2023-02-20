@@ -1,6 +1,6 @@
 /** Variable that fix in configuration file
  */
-public class specialvariable implements Command{
+public class Sampleconfigurationfile {
     static int m=20;
     static int n=15;
     static int init_plan_min=5;
