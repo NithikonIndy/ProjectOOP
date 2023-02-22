@@ -1,20 +1,10 @@
 /** check nearby  function | opponent expression view space
  */
-public class InfoExpression {
+public interface InfoExpression extends Command{
 
-
-
-    /**
-     * view for Player
+    /** view for Player
      */
-    public long[] viewspace() { // opponent exprssion
-
-        return null;
-    }
+    public long[] viewspace() ; // opponent exprssion
 
 
-
-        private static double calculateDistance ( int a, int b){
-            return Math.sqrt(Math.pow(a - b, 2) + Math.pow(a - b, 2));
-        }
 }

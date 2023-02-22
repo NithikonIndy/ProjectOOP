@@ -1,4 +1,4 @@
 /** count timer initial
  */
-public class Time {
+public interface Time {
 }

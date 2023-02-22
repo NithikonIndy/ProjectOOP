@@ -1,46 +1,114 @@
 /** create player and player should be have budget , city center , count turn
  */
 import java.util.Arrays;
-public class Player extends ActionCommand{
+public class Player implements ActionCommand,MoveCommand,RegionCommand,InfoExpression,Time{
 
+    boolean turn;
+    int countturn=1;
+    Map map=new Map();
     protected long init_budget;
-    protected int Xcurrent;
-    protected int Ycurrent;
-    protected long [][]centercity =new long[Sampleconfigurationfile.n][Sampleconfigurationfile.m] ;
+    protected int Xcitycenter;
+    protected int Ycitycenter;
+    protected int Xplayer;
+    protected int Yplayer;
+
 
     public Player(){
 
     }
     public void createplayer (){
         init_budget=Sampleconfigurationfile.init_budget;
-        Map map=new Map();
         int []temp=map.Randomregion();
-        Ycurrent=temp[0];
-        Xcurrent=temp[1];
-        centercity [Ycurrent][Xcurrent]= Sampleconfigurationfile.init_center_dep; //create city center and initial deposit
+        Ycitycenter=temp[0];
+        Xcitycenter=temp[1];
+        Yplayer=temp[0];
+        Xplayer=temp[1];
+        map.display [Ycitycenter][Xcitycenter]= Sampleconfigurationfile.init_center_dep; //create city center and initial deposit
     }
 
     public void show(){
-        System.out.println(Xcurrent+ "   "+Ycurrent);
+        System.out.println(Xcitycenter+ "   "+Ycitycenter);
     }
-
-
     @Override
     public void Done() {
+        turn= true;
 
-        super.Done();
+        countturn++;
+    }
+    @Override
+    public void reset() {
+        turn=false;
     }
 
     @Override
     public void Relocate(int x,int y) {
-        int shortpath= (int) Math.sqrt((Math.pow(Xcurrent-x,2) + Math.pow(Ycurrent-y,2)));
+        int shortpath= (int) Math.sqrt((Math.pow(Xcitycenter-x,2) + Math.pow(Ycitycenter-y,2)));
         int cost= 5 *shortpath+10;
         init_budget-=cost;
-        centercity[x][y]= centercity [Ycurrent][Xcurrent];
-        centercity [Ycurrent][Xcurrent] =0;
-        Ycurrent=y;
-        Xcurrent=x;
-        System.out.println(init_budget);
-        super.Relocate(x,y);
+        map.display [x][y]= map.display  [Ycitycenter][Xcitycenter];
+        map.display [Ycitycenter][Xcitycenter] =0;
+        Ycitycenter=y;
+        Xcitycenter=x;
+        Done();
+    }
+
+    @Override
+    public void MoveUp() {
+        Yplayer--;
+        init_budget--;
+    }
+
+    @Override
+    public void MoveUpLeft() {
+        Yplayer--;
+        Xplayer--;
+        init_budget--;
+    }
+
+    @Override
+    public void MoveUpRight() {
+        Yplayer--;
+        Xplayer++;
+        init_budget--;
+    }
+
+    @Override
+    public void MoveDown() {
+        Yplayer++;
+        init_budget--;
+    }
+
+    @Override
+    public void MoveDownLeft() {
+        Yplayer++;
+        Xplayer--;
+        init_budget--;
+    }
+
+    @Override
+    public void MoveDownRight() {
+        Yplayer++;
+        Xplayer++;
+        init_budget--;
+    }
+
+    @Override
+    public void invest(long moneyinvest) {
+        map.display[Yplayer][Xplayer]=moneyinvest;
+
+
+    }
+
+    @Override
+    public void collect(long withdraw) {
+        map.display[Yplayer][Xplayer]=-withdraw;
+    }
+
+    /**
+     * view for Player
+     */
+    @Override
+    public long[] viewspace() {
+        return new long[0];
     }
 }

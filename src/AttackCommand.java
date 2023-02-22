@@ -1,5 +1,5 @@
 /** attack player by shoot
  */
-public class AttackCommand implements Command{
+public interface AttackCommand extends Command{
     //
 }

@@ -5,7 +5,7 @@ import java.util.Random;
 public class Map {
     protected int width =Sampleconfigurationfile.n; // n=15 , columns y
     protected int length=Sampleconfigurationfile.m; //m=20 , rows x
-    protected int[][] display =new int [length][width];
+    protected long[][] display =new long [length][width];
 
     public int[] Randomregion (){
         Random rand = new Random();

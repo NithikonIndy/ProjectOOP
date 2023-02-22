@@ -1,18 +1,21 @@
 public class Main {
-    static boolean isStart;
+    static boolean isStart ;
     public static void main(String[] args) {
 
-        while (isStart){
+        while (!isStart){
+
+            Player p1=new Player();
+            p1.createplayer();
+            if(p1.init_budget<=0){
+                isStart =true;
+            }
 
         }
-        Map map=new Map();
-        map.Createmap();
-        Player p1=new Player();
-        p1.createplayer();
-        p1.show();
-        p1.Relocate(10,10);
-        p1.show();
+
+
+
+
+
+
     }
-
-
 }
