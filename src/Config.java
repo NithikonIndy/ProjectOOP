@@ -1,6 +1,6 @@
 /** Variable that for in configuration file
  */
-public interface Sampleconfigurationfile {
+public interface Config {
     static int m=20;
     static int n=15;
     static int init_plan_min=5;
