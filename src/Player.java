@@ -11,6 +11,7 @@ public class Player implements ActionCommand,MoveCommand,RegionCommand,InfoExpre
     protected int Ycitycenter;
     protected int Xplayer;
     protected int Yplayer;
+    protected long citycenter;
 
 
     public Player(){
@@ -19,15 +20,15 @@ public class Player implements ActionCommand,MoveCommand,RegionCommand,InfoExpre
     public void createplayer (){
         init_budget=Sampleconfigurationfile.init_budget;
         int []temp=map.Randomregion();
-        Ycitycenter=temp[0];
-        Xcitycenter=temp[1];
-        Yplayer=temp[0];
-        Xplayer=temp[1];
+        Xcitycenter=temp[0];
+        Ycitycenter=temp[1];
+        Xplayer=temp[0];
+        Yplayer=temp[1];
         map.display [Ycitycenter][Xcitycenter]= Sampleconfigurationfile.init_center_dep; //create city center and initial deposit
     }
 
     public void show(){
-        System.out.println(Xcitycenter+ "   "+Ycitycenter);
+        System.out.println(Ycitycenter+ "   "+Xcitycenter);
     }
     @Override
     public void Done() {
@@ -102,6 +103,7 @@ public class Player implements ActionCommand,MoveCommand,RegionCommand,InfoExpre
     @Override
     public void collect(long withdraw) {
         map.display[Yplayer][Xplayer]=-withdraw;
+
     }
 
     /**
