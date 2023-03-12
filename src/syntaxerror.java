@@ -1,4 +1,4 @@
-public class syntaxerror extends Exception {
-    public syntaxerror() {
+public class Syntaxerror extends Exception {
+    public Syntaxerror() {
     }
 }
