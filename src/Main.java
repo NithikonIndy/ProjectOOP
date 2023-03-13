@@ -10,7 +10,7 @@ public class Main {
         playerList.add(new Player("TT"));
         playerList.add(new Player("HH"));
 
-       if (!GameStart){
+       while (!GameStart){
            // สร้าง Map และ GameState
            Map map = new Map();
            Gamestate gameState = new Gamestate(map, playerList);
@@ -22,7 +22,7 @@ public class Main {
            map.Showmap();
 
          //วางแผน
-
+            GameStart =true;
        }
 
 
