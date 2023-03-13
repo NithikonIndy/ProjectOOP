@@ -1,42 +1,63 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Gamestate {
-    protected List<Map> areas;
-    protected Time timeManager ;
-    private final boolean DEBUG = true;
+    private Map map;
+    private ArrayList<Player> players;
+    private Player p;
+    private MoveCommand move;
+    private ActionCommand act;
+    private AttackCommand attack;
+    private RegionCommand regionCommand;
+    private InfoExpression infoExpression;
 
 
-//    public static void Gamestart(){
-//        waitState(5);
-//    }
-//
-//    private void waitState(int time){
-//        try{
-//            for(int i = 1 ; i <= time ; i++) {
-//                // ทำ if หรือ switch ทำการเลือกใช้ว่ามันทำอะไรอยู่
-//                if(timeManager.inputType.equals("slowdown")){
-//                    Thread.sleep((int)(1000*timeManager.slowDownMultiplier));
-//                    if(DEBUG) System.out.println("current time "+(i*(int)(1000*timeManager.slowDownMultiplier))/1000.0+ " second");
-//                }
-//                else if(timeManager.inputType.equals("fastforward")) {
-//                    Thread.sleep((int)(1000*timeManager.fastForwardMuliplier));
-//                    if(DEBUG) System.out.println("current time "+(i*(int)(1000*timeManager.fastForwardMuliplier))/1000.0+ " second");
-//                }
-//                else{
-//                    Thread.sleep((int)(1000*0.125));
-//                    if(DEBUG) System.out.println("current time "+i+ " second");
-//                }
-//
-//
-//            }
-//        }catch (InterruptedException ex){
-//            ex.printStackTrace();
-//        }
-//    }
-
-    public static void main(String[] args) {
-
-
-
+    public Gamestate(Map map, ArrayList<Player> players) {
+        this.map = map;
+        this.players = players;
+        this.move=new MoveCommand();
+        this.regionCommand=new RegionCommand();
+        this.act=new ActionCommand();
+        this.attack=new AttackCommand();
+        this.infoExpression=new InfoExpression();
+        this.p=new Player();
     }
+
+    public void showlist(){
+        System.out.println( getP().XcityplayerList);
+        System.out.println(getP().YcityplayerList);
+    }
+    public ActionCommand getAct() {
+        return act;
+    }
+
+    public Player getP() {
+        return p;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public MoveCommand getMove(){
+       // move.MoveUp(players.get(0));
+        return move;}
+
+    public AttackCommand getAttack() {
+        return attack;
+    }
+
+    public InfoExpression getInfoExpression() {
+        return infoExpression;
+    }
+
+    public RegionCommand getRegionCommand() {
+        return regionCommand;
+    }
+
+//    public boolean isGameOver() {
+//        return player.getYplayer() == map.getLength() - 1 && player.getXplayer() == map.getWidth() - 1;
+//    }
 }

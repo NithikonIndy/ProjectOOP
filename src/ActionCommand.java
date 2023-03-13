@@ -1,6 +1,12 @@
 /** action done or relocate
  */
 public class ActionCommand implements Command {
+    protected long moneycitycenter;
+    protected long budgetplayer;
+    protected int Xcitycenter;
+    protected int Ycitycenter;
+    protected int Xplayer;
+    protected int Yplayer;
     protected int countturn;
     protected boolean turn;
 
@@ -12,25 +18,45 @@ public class ActionCommand implements Command {
         this.countturn = countturn;
     }
 
-    public void Done() {
+    public void Done(Player player) {
+        turn=player.getturn();
+        countturn=player.getCountturn()+1;
         turn= true;
-        countturn++;
+        player.setCountturn(countturn);
+        player.setturn(turn);
+
+
     }
 
-    public void reset() {
+    public void reset(Player player) {
+        turn=player.getturn();
+        Xcitycenter=player.getXcitycenter();
+        Ycitycenter=player.getYcitycenter();
+        Xplayer=Xcitycenter;
+        Yplayer=Ycitycenter;
         turn=false;
+        player.setXplayer(Xplayer);
+        player.setYplayer(Yplayer);
     }
 
 
-    public void Relocate(int x,int y,int Xcitycenter,int Ycitycenter,long budget ,long display[][]) {
-        int shortpath= (int) Math.sqrt((Math.pow(Xcitycenter-x,2) + Math.pow(Ycitycenter-y,2)));
-        int cost= 5 *shortpath+10;
-        budget-=cost;
-        display [x][y]= display  [Ycitycenter][Xcitycenter];
-        display [Ycitycenter][Xcitycenter] =0;
-        Ycitycenter=y;
-        Xcitycenter=x;
-        Done();
+    public void Relocate(Player player ,Map map) {
+        Xcitycenter = player.getXcitycenter();
+        Ycitycenter =player.getYcitycenter();
+        Xplayer=player.getXplayer();
+        Yplayer=player.getYplayer();
+        budgetplayer=player.getInit_budget();
+        moneycitycenter=map.getMap(Xcitycenter,Ycitycenter);
+        long shortpath = (long) Math.sqrt((Math.pow(Xcitycenter-Xplayer,2) + Math.pow(Ycitycenter-Yplayer,2)));
+        long cost= 5 *shortpath+10;
+        budgetplayer-=cost;
+        map.setMap(Xplayer,Yplayer,moneycitycenter); // relocate
+        map.setMap(Xcitycenter,Ycitycenter,0); // delete old citycenter
+        Xcitycenter=Xplayer;
+        Ycitycenter=Yplayer;
+        player.setXplayer(Xcitycenter);
+        player.setYplayer(Ycitycenter);
+        Done(player);
     }
 
 }

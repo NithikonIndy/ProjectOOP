@@ -1,34 +1,37 @@
+import java.util.ArrayList;
+import java.util.Map;
+
 /** create player and player should be have budget , city center , count turn
  */
 
 public class Player {
 
+    ArrayList<Integer> XcityplayerList=new ArrayList<>();
+    ArrayList<Integer> YcityplayerList=new ArrayList<>();
+
+    protected String name;
     boolean turn;
     int countturn=1;
-
-
     protected long init_budget;
     protected int Xcitycenter;
     protected int Ycitycenter;
     protected int Xplayer;
     protected int Yplayer;
-    protected long [][]citycenter;
-
+    private Map map;
+    private RegionCommand regionCommand;
 
     public Player(){
 
     }
-    public void createplayer (){
-        init_budget=Config.init_budget;
-        Map map=new Map();
-        int []temp=map.Randomregion();
-        Xcitycenter=temp[0];
-        Ycitycenter=temp[1];
-        Xplayer=temp[0];
-        Yplayer=temp[1];
-        citycenter [Ycitycenter][Xcitycenter]= Config.init_center_dep; //create city center and initial deposit
+    public Player(String name){
+        this.name=name;
+        this.init_budget=Config.init_budget;
+        this.regionCommand=new RegionCommand();
     }
 
+    public String getName() {
+        return name;
+    }
     public boolean getturn(){
         return this.turn;
     }
@@ -50,8 +53,9 @@ public class Player {
         return this.countturn;
     }
 
+    public void setName(String name) {this.name = name;}
 
-    public void setturn(boolean turn){ turn=this.turn; }
+    public void setturn(boolean turn){ this.turn=turn; }
 
     public void setInit_budget(long bugget){
         this.init_budget=bugget;
@@ -72,10 +76,20 @@ public class Player {
         this.countturn=countturn;
     }
 
-
-
     public void show(){
-        System.out.println(Ycitycenter+ "   "+Xcitycenter);
+        System.out.println(++Ycitycenter + "   "+ ++Xcitycenter);
     }
+    public void showplayerlist(){
+
+        for (int i=0;i<XcityplayerList.size();i++){
+            System.out.println(XcityplayerList.get(i));
+            System.out.println(YcityplayerList.get(i));
+            System.out.println("t" +
+                    "");
+        }
+    }
+
+
+
 
 }
