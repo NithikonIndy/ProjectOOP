@@ -38,15 +38,11 @@ public class Map {
         p.setXplayer(x);
         p.setYplayer(y);
         players[y][x]=Config.init_center_dep;
-        p.show();
-        System.out.println(p.YcityplayerList +""+ p.XcityplayerList);
+//        p.show();
+//        System.out.println(p.YcityplayerList +""+ p.XcityplayerList);
 
-        //p.cityplayerList.add(getMap(x,y));
     }
 
-//    public void DepositInterest(int turn,Player player){
-//        players[]
-//    }
 
     public void setMap(int x, int y,long map) {
         this.players[y][x] = map;
@@ -65,11 +61,12 @@ public class Map {
     }
 
 
+    public void RemovePlayer(Player p){
+        p.setInit_budget(0);
+        p.YcityplayerList.removeAll(p.YcityplayerList);
+        p.XcityplayerList.removeAll(p.XcityplayerList);
+    }
 
-
-//    public void RemovePlayer(Player p){
-//        this.p.remove(p);
-//    }
 
 
 }

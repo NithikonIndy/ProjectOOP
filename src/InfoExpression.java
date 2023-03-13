@@ -21,51 +21,76 @@ public class InfoExpression implements Command{
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck--;
+            int checkconditionY= Ycheck-(i+1);
+            if(checkconditionY>0 && checkconditionY <20){
+                Ycheck-=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
-//            for (int k=0;k< player.XcityplayerList.size();k++){
-//                if(player.XcityplayerList.get(k)==){
-//
-//                }
-//            }
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+1));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+1));
+                    }
+                }else {
+                    break;
+                }
             }
-
-
         }
         // upright
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck--;
+            int checkconditionY= Ycheck-(i+1);
+            int checkconditionX= Xcheck+(i+1);
+            if(checkconditionY>0 && checkconditionY <20){
+                Ycheck-=(i+1);
+            }else {
+                break;
             }
-            if(Xcheck<14 && Xcheck >0){
-                Xcheck++;
+            if(checkconditionX < 15 && checkconditionX >0){
+                Xcheck+=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+2));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.XcityplayerList.get(k)!=Xcheck && player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+2));
+                    }
+                }else {
+                    break;
+                }
             }
-
         }
         // downright
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck++;
+            int checkconditionY= Ycheck+(i+1); //15
+            int checkconditionX= Xcheck+(i+1); //15
+            if(checkconditionY>0 && checkconditionY <20){
+                Ycheck+=(i+1);
+            }else {
+                break;
             }
-            if(Xcheck<14 && Xcheck >0){
-                Xcheck++;
+            if(checkconditionX<15 && checkconditionX >0){
+                Xcheck+=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
 
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+3));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.XcityplayerList.get(k)!=Xcheck && player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+3));
+                    }
+                }else {
+                    break;
+                }
             }
 
         }
@@ -73,13 +98,22 @@ public class InfoExpression implements Command{
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck++;
+            int checkconditionY= Ycheck+(i+1);
+            if(checkconditionY>0 && checkconditionY <20){
+                Ycheck+=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
 
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+4));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+4));
+                    }
+                }else {
+                    break;
+                }
             }
 
         }
@@ -87,16 +121,28 @@ public class InfoExpression implements Command{
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck++;
+            int checkconditionY= Ycheck+(i+1);
+            int checkconditionX= Xcheck-(i+1);
+            if(checkconditionY >0 && checkconditionY <20){
+                Ycheck+=(i+1);
+            }else {
+                break;
             }
-            if(Xcheck<14 && Xcheck >0){
-                Xcheck--;
+            if(checkconditionX<15 && checkconditionX >0){
+                Xcheck-=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
 
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+5));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.XcityplayerList.get(k)!=Xcheck && player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+5));
+                    }
+                }else {
+                    break;
+                }
             }
 
         }
@@ -104,16 +150,28 @@ public class InfoExpression implements Command{
         for (int i=0;i<6;i++){
             int Xcheck=Xplayer;
             int Ycheck=Yplayer;
-            if(Ycheck>0 && Ycheck <19){
-                Ycheck--;
+            int checkconditionY= Ycheck-(i+1);
+            int checkconditionX= Xcheck-(i+1);
+            if(checkconditionY>0 && checkconditionY <20){
+                Ycheck-=(i+1);
+            }else {
+                break;
             }
-            if(Xcheck<14 && Xcheck >0){
-                Xcheck--;
+            if(checkconditionX<15 && checkconditionX >0){
+                Xcheck-=(i+1);
+            }else {
+                break;
             }
             long check=map.getMap(Xcheck,Ycheck);
 
-            if(check>0){
-                index.add(Long.valueOf((10*(i+1))+6));
+            for (int k=0;k< player.XcityplayerList.size();k++){
+                if(player.XcityplayerList.get(k)!=Xcheck && player.YcityplayerList.get(k)!=Ycheck){
+                    if(check>0){
+                        index.add(Long.valueOf((10*(i+1))+6));
+                    }
+                }else {
+                    break;
+                }
             }
 
         }
@@ -138,23 +196,23 @@ public class InfoExpression implements Command{
         boolean checkprocess=false;
 
         //up
-        if(Ycheck<19 && Ycheck>0){ // y intial 0-20
+        if(Ycheck<20 && Ycheck>0){ // y intial 0-20
             Ycheck--;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(onedirectnearby(player,map,Xcheck,Ycheck,1));
         if(checkprocess==true){
             Ycheck++;
             checkprocess=false;
         }
 
         //upright
-        if(Ycheck<19 && Ycheck>0 && Xcheck < 14 && Xcheck >0){ // y intial 0-20 and x intail 0-20
+        if(Ycheck<20 && Ycheck>0 && Xcheck < 15 && Xcheck >0){ // y intial 0-20 and x intail 0-20
             Ycheck--;
             Xcheck++;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(obliquenearby(player,map,Xcheck,Ycheck,2));
         if(checkprocess==true){
             Ycheck++;
             Xcheck--;
@@ -162,12 +220,12 @@ public class InfoExpression implements Command{
         }
 
         //downright
-        if(Ycheck<19 && Ycheck>0 && Xcheck < 14 && Xcheck >0){ // y intial 0-20 and x intail 0-20
+        if(Ycheck<20 && Ycheck>0 && Xcheck < 15 && Xcheck >0){ // y intial 0-20 and x intail 0-20
             Ycheck++;
             Xcheck++;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(obliquenearby(player,map,Xcheck,Ycheck,3));
         if(checkprocess==true){
             Ycheck--;
             Xcheck--;
@@ -175,23 +233,23 @@ public class InfoExpression implements Command{
         }
 
         //down
-        if(Ycheck<19 && Ycheck>0){ // y intial 0-20
+        if(Ycheck<20 && Ycheck>0){ // y intial 0-20
             Ycheck++;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(onedirectnearby(player,map,Xcheck,Ycheck,4));
         if(checkprocess==true){
             Ycheck--;
             checkprocess=false;
         }
 
         //downleft
-        if(Ycheck<19 && Ycheck>0 && Xcheck < 14 && Xcheck >0){ // y intial 0-20 and x intail 0-20
+        if(Ycheck<20 && Ycheck>0 && Xcheck < 15 && Xcheck >0){ // y intial 0-20 and x intail 0-20
             Ycheck++;
             Xcheck--;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(obliquenearby(player,map,Xcheck,Ycheck,5));
         if(checkprocess==true){
             Ycheck--;
             Xcheck++;
@@ -199,34 +257,65 @@ public class InfoExpression implements Command{
         }
 
         //upleft
-        if(Ycheck<19 && Ycheck>0 && Xcheck < 14 && Xcheck >0){ // y intial 0-20 and x intail 0-20
+        if(Ycheck<20 && Ycheck>0 && Xcheck < 15 && Xcheck >0){ // y intial 0-20 and x intail 0-20
             Ycheck--;
             Xcheck--;
             checkprocess=true;
         }
-        listnearby.add(onedirectnearby(map,Ycheck,Xcheck));
+        listnearby.add(obliquenearby(player,map,Xcheck,Ycheck,6));
         if(checkprocess==true){
             --Ycheck;
             --Xcheck;
             checkprocess=false;
         }
 
-        if(listnearby.size()==0){
-            listnearby.add(0L);
-        }
+        long mincheck=0;
 
-        long mincheck = Collections.min(listnearby);
+        System.out.println(listnearby);
+        for (int i=0;i<listnearby.size();i++){
+
+            if (listnearby.get(i)>0){
+                mincheck=listnearby.get(i);
+                break;
+            }else {
+                mincheck=0;
+            }
+        }
 
         return mincheck;
     }
 
-    public long onedirectnearby(Map map,int xposition,int yposition){
+    public long onedirectnearby(Player player,Map map,int xposition,int yposition,int direct){
         long checknearby = map.getMap(xposition,yposition);
         long near=0;
-        if(checknearby!=0){
-            long x=1;  //x =distance player until destionation
-            long y=countdigital(checknearby); //y=digitalnumber
-            near=100*x+y;
+//        System.out.println(player.YcityplayerList);
+//        System.out.println(yposition);
+        for (int k=0;k< player.XcityplayerList.size();k++){
+            if( player.YcityplayerList.get(k)!=player.getYplayer()&&player.YcityplayerList.get(k)!=yposition){
+                if(checknearby >0) {
+                    long y=countdigital(checknearby); //y=digitalnumber
+                    near=100*direct+y;
+                    break;
+                }else {
+                    near=0;
+                }
+            }
+        }
+        return near;
+    }
+    public long obliquenearby(Player player,Map map,int xposition,int yposition,int direct){
+        long checknearby = map.getMap(xposition,yposition);
+        long near=0;
+        for (int k=0;k< player.XcityplayerList.size();k++){
+            if(player.YcityplayerList.get(k)!=player.getYplayer() && player.XcityplayerList.get(k)!=player.getXplayer()&&player.XcityplayerList.get(k)!=xposition && player.YcityplayerList.get(k)!=yposition){
+                if(checknearby >0){
+                    long y=countdigital(checknearby); //y=digitalnumber
+                    near=100*direct+y;
+                }else {
+                    near=0;
+                }
+
+            }
         }
         return near;
     }

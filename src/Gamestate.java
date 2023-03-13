@@ -9,6 +9,7 @@ public class Gamestate {
     private AttackCommand attack;
     private RegionCommand regionCommand;
     private InfoExpression infoExpression;
+    private Time time;
 
 
     public Gamestate(Map map, ArrayList<Player> players) {
@@ -20,6 +21,7 @@ public class Gamestate {
         this.attack=new AttackCommand();
         this.infoExpression=new InfoExpression();
         this.p=new Player();
+        this.time=new Time();
     }
 
     public void showlist(){
@@ -42,8 +44,8 @@ public class Gamestate {
     }
 
     public MoveCommand getMove(){
-       // move.MoveUp(players.get(0));
-        return move;}
+        return move;
+    }
 
     public AttackCommand getAttack() {
         return attack;
@@ -57,7 +59,12 @@ public class Gamestate {
         return regionCommand;
     }
 
-//    public boolean isGameOver() {
-//        return player.getYplayer() == map.getLength() - 1 && player.getXplayer() == map.getWidth() - 1;
-//    }
+    public boolean GameOver(){
+        if (map.getMap(p.getXcitycenter(), p.getYcitycenter())==0){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
 }

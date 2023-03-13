@@ -1,6 +1,8 @@
 /** attack player by shoot
  */
 public class AttackCommand implements Command{
+
+    private ActionCommand act;
     protected long budgetplayer;
     public long getBudget() {
         return budgetplayer;
@@ -8,6 +10,10 @@ public class AttackCommand implements Command{
 
     public void setBudget(int budgetplayer) {
         this.budgetplayer = budgetplayer;
+    }
+
+    public AttackCommand(){
+        this.act=new ActionCommand();
     }
     public void attack(Player player,Map map,int money,int x,int y){
         if(player.getInit_budget()>=0){

@@ -1,10 +1,14 @@
 /** invest region | collect region and Interest rates deposit of region
  */
 public class RegionCommand implements Command {
-    ActionCommand act=new ActionCommand();
     int Xplayer;
     int Yplayer;
     long budgetplayer;
+    private ActionCommand act;
+
+    public RegionCommand(){
+        this.act=new ActionCommand();
+    }
 
     public int getYplayer() {
         return Yplayer;

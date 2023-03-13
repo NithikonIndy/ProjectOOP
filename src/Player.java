@@ -9,6 +9,8 @@ public class Player {
     ArrayList<Integer> XcityplayerList=new ArrayList<>();
     ArrayList<Integer> YcityplayerList=new ArrayList<>();
 
+    private boolean Alive;
+
     protected String name;
     boolean turn;
     int countturn=1;
@@ -88,6 +90,9 @@ public class Player {
                     "");
         }
     }
+
+
+
 
 
 
