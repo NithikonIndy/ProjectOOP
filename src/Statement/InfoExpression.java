@@ -1,7 +1,10 @@
 package Statement;
+
+import PlayerandMap.Map;
+import PlayerandMap.Player;
+
 import java.util.ArrayList;
 import java.util.Collections;
-
 /**
  * check nearby  function | opponent expression view space
  */
@@ -32,7 +35,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.YcityplayerList.contains(Ycheck)) {
+            if (player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -58,7 +61,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.XcityplayerList.contains(Xcheck) && player.YcityplayerList.contains(Ycheck)) {
+            if (player.getXcityplayerList().contains(Xcheck) && player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -85,7 +88,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.XcityplayerList.contains(Xcheck) && player.YcityplayerList.contains(Ycheck)) {
+            if (player.getXcityplayerList().contains(Xcheck) && player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -107,7 +110,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.YcityplayerList.contains(Ycheck)) {
+            if (player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -136,7 +139,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.XcityplayerList.contains(Xcheck) && player.YcityplayerList.contains(Ycheck)) {
+            if (player.getXcityplayerList().contains(Xcheck) && player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -165,7 +168,7 @@ public class InfoExpression implements Command {
             }
             long check = map.getMap(Xcheck, Ycheck);
 
-            if (player.XcityplayerList.contains(Xcheck) && player.YcityplayerList.contains(Ycheck)) {
+            if (player.getXcityplayerList().contains(Xcheck) && player.getYcityplayerList().contains(Ycheck)) {
                 break;
             } else {
                 if (check > 0) {
@@ -292,7 +295,7 @@ public class InfoExpression implements Command {
 //        System.out.println(player.YcityplayerList);
 //        System.out.println(yposition);
 
-        if (player.YcityplayerList.contains(yposition)) {
+        if (player.getYcityplayerList().contains(yposition)) {
 
         }else {
             if (checknearby > 0) {
@@ -309,7 +312,7 @@ public class InfoExpression implements Command {
     public long obliquenearby(Player player, Map map, int xposition, int yposition, int direct) {
         long checknearby = map.getMap(xposition, yposition);
         long near = 0;
-        if ((player.YcityplayerList.contains(yposition) && player.XcityplayerList.contains(xposition))) {
+        if ((player.getYcityplayerList().contains(yposition) && player.getXcityplayerList().contains(xposition))) {
 
         } else {
             if (checknearby > 0) {

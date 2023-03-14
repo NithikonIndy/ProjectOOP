@@ -1,5 +1,7 @@
 package Statement;
 
+import PlayerandMap.Player;
+
 /** act move ,  up | down | upleft | upright | downleft | downright
  */
 public class MoveCommand implements Command{

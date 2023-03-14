@@ -1,4 +1,7 @@
 package Statement;
+import PlayerandMap.Map;
+import PlayerandMap.Player;
+import ConfigFile.Config;
 /** invest region | collect region and Interest rates deposit of region
  */
 public class RegionCommand implements Command {
@@ -42,15 +45,15 @@ public class RegionCommand implements Command {
             Yplayer=player.getYplayer();
             Xplayer=player.getXplayer();
             map.setMap(Xplayer,Yplayer,moneyinvest);
-            player.XcityplayerList.add(Xplayer);
-            player.YcityplayerList.add(Yplayer);
+            player.getXcityplayerList().add(Xplayer);
+            player.getYcityplayerList().add(Yplayer);
            // player.cityplayerList.add(map.getMap(Xplayer,Yplayer)); // อนาเขตplayer
             budgetplayer= player.getInit_budget();
             budgetplayer-=moneyinvest;
 //            setXplayer();
 //            setYplayer();
             setBudget(budgetplayer);
-            System.out.println(player.YcityplayerList+""+player.XcityplayerList);
+            System.out.println(player.getYcityplayerList()+""+player.getYcityplayerList());
         }
         act.Done(player);
     }

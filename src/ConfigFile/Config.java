@@ -1,4 +1,4 @@
-package Statement;
+package ConfigFile;
 
 /** Variable that for in configuration file
  */
@@ -14,5 +14,6 @@ public interface Config {
     static long rev_cost=100;
     static long max_dep=1000000;
     static long interest_pct=5;
+
 
 }

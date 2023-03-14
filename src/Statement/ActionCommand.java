@@ -1,5 +1,8 @@
 package Statement;
 
+import PlayerandMap.Map;
+import PlayerandMap.Player;
+
 /** action done or relocate
  */
 public class ActionCommand implements Command {
@@ -42,7 +45,7 @@ public class ActionCommand implements Command {
     }
 
 
-    public void Relocate(Player player ,Map map) {
+    public void Relocate(Player player , Map map) {
         Xcitycenter = player.getXcitycenter();
         Ycitycenter =player.getYcitycenter();
         Xplayer=player.getXplayer();

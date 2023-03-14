@@ -1,11 +1,11 @@
-import Statement.Player;
-import Statement.Map;
+import PlayerandMap.Player;
+import PlayerandMap.Map;
 import Statement.MoveCommand;
 import Statement.ActionCommand;
 import Statement.AttackCommand;
 import Statement.RegionCommand;
 import Statement.InfoExpression;
-import Statement.Time;
+import PlayerandMap.Time;
 
 
 import java.util.ArrayList;

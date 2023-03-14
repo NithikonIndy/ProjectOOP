@@ -1,4 +1,6 @@
 package Statement;
+import PlayerandMap.Map;
+import PlayerandMap.Player;
 /** attack player by shoot
  */
 public class AttackCommand implements Command{
@@ -19,7 +21,9 @@ public class AttackCommand implements Command{
     public void attack(Player player,Map map,int money,int x,int y){
         if(player.getInit_budget()>=0){
             budgetplayer=player.getInit_budget();
-            map.players[y][x]-=money;
+            long sub= map.getMap(x,y)-money;
+            map.setMap(x,y,sub);
+           // map.players[y][x]-=money;
             budgetplayer--;
             player.setInit_budget(budgetplayer);
         }else {

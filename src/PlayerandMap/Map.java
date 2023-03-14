@@ -1,4 +1,5 @@
-package Statement;
+package PlayerandMap;
+import ConfigFile.Config;
 /** create map m*n , random city crew ,create deposit of region
  */
 

@@ -1,4 +1,10 @@
-package Statement;
+package PlayerandMap;
+
+
+import ConfigFile.Config;
+
+
+
 public class Time {
     private int time;
     private boolean running;
