@@ -1,3 +1,13 @@
+import Statement.Player;
+import Statement.Map;
+import Statement.MoveCommand;
+import Statement.ActionCommand;
+import Statement.AttackCommand;
+import Statement.RegionCommand;
+import Statement.InfoExpression;
+import Statement.Time;
+
+
 import java.util.ArrayList;
 
 public class Gamestate {
@@ -25,8 +35,8 @@ public class Gamestate {
     }
 
     public void showlist(){
-        System.out.println( getP().XcityplayerList);
-        System.out.println(getP().YcityplayerList);
+        System.out.println(getP().getXcityplayerList());
+        System.out.println(getP().getYcityplayerList());
     }
     public ActionCommand getAct() {
         return act;

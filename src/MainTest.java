@@ -44,7 +44,7 @@ class MainTest {
         //map.AddPlayer(playerList.get(1),10,8);
         map.Showmap();
         Assertions.assertEquals(0,gameState.getInfoExpression().viewspace(playerList.get(0),map));
-       // Assertions.assertEquals(0,gameState.getInfoExpression().nearby(playerList.get(0),map));
+        Assertions.assertEquals(0,gameState.getInfoExpression().nearby(playerList.get(0),map));
 
     }
 }

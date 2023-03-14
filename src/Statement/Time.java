@@ -1,3 +1,4 @@
+package Statement;
 public class Time {
     private int time;
     private boolean running;

@@ -1,3 +1,5 @@
+package Statement;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -29,6 +31,14 @@ public class Player {
         this.name=name;
         this.init_budget=Config.init_budget;
         this.regionCommand=new RegionCommand();
+    }
+
+    public ArrayList<Integer> getYcityplayerList() {
+        return YcityplayerList;
+    }
+
+    public ArrayList<Integer> getXcityplayerList() {
+        return XcityplayerList;
     }
 
     public String getName() {

@@ -1,3 +1,5 @@
+package Statement;
+
 /** Variable that for in configuration file
  */
 public interface Config {

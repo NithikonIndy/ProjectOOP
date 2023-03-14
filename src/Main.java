@@ -20,9 +20,9 @@ public class Main {
 
            // แสดงผลลัพธ์
            map.Showmap();
-
+           GameStart =true;
          //วางแผน
-            GameStart =true;
+
        }
 
 
