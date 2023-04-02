@@ -1,42 +1,191 @@
-import java.util.List;
+import PlayerandMap.Maps;
+import PlayerandMap.Player;
+import PlayerandMap.Time;
+import Statement.*;
+
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Gamestate {
-    protected List<Map> areas;
-    protected Time timeManager ;
-    private final boolean DEBUG = true;
+    private Maps map;
+    private ArrayList<Player> players;
+    private Player p;
+    private MoveCommand move;
+    private ActionCommand act;
+    private AttackCommand attack;
+    private RegionCommand regionCommand;
+    private InfoExpression infoExpression;
+    private Time time;
 
+    private WhileStatement whileStatement;
 
-//    public static void Gamestart(){
-//        waitState(5);
-//    }
+    private IfStatement ifStatement;
+
 //
-//    private void waitState(int time){
-//        try{
-//            for(int i = 1 ; i <= time ; i++) {
-//                // ทำ if หรือ switch ทำการเลือกใช้ว่ามันทำอะไรอยู่
-//                if(timeManager.inputType.equals("slowdown")){
-//                    Thread.sleep((int)(1000*timeManager.slowDownMultiplier));
-//                    if(DEBUG) System.out.println("current time "+(i*(int)(1000*timeManager.slowDownMultiplier))/1000.0+ " second");
-//                }
-//                else if(timeManager.inputType.equals("fastforward")) {
-//                    Thread.sleep((int)(1000*timeManager.fastForwardMuliplier));
-//                    if(DEBUG) System.out.println("current time "+(i*(int)(1000*timeManager.fastForwardMuliplier))/1000.0+ " second");
-//                }
-//                else{
-//                    Thread.sleep((int)(1000*0.125));
-//                    if(DEBUG) System.out.println("current time "+i+ " second");
-//                }
-//
-//
-//            }
-//        }catch (InterruptedException ex){
-//            ex.printStackTrace();
-//        }
-//    }
+    public Gamestate(Maps map, ArrayList<Player> players) {
+        this.map = map;
+        this.players = players;
+        this.move=new MoveCommand();
+        this.regionCommand=new RegionCommand();
+        this.act=new ActionCommand();
+        this.attack=new AttackCommand();
+        this.infoExpression=new InfoExpression();
+        this.p=new Player();
+        this.time=new Time();
+        this.whileStatement=new WhileStatement();
+        this.ifStatement=new IfStatement();
+    }
 
-    public static void main(String[] args) {
+    public void showlist(){
+        System.out.println(getP().getXcityplayerList());
+        System.out.println(getP().getYcityplayerList());
+    }
+    public ActionCommand getAct() {
+        return act;
+    }
+
+    public Player getP() {
+        return p;
+    }
+
+    public Maps getMap() {
+        return map;
+    }
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public MoveCommand getMove(){
+        return move;
+    }
+
+    public AttackCommand getAttack() {
+        return attack;
+    }
+
+    public InfoExpression getInfoExpression() {
+        return infoExpression;
+    }
+
+    public RegionCommand getRegionCommand() {
+        return regionCommand;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public IfStatement getIfStatement() {
+        return ifStatement;
+    }
+
+    public WhileStatement getWhileStatement() {
+        return whileStatement;
+    }
+
+    public boolean GameOver(){
+        if (map.getMap(p.getXcitycenter(), p.getYcitycenter())==0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void Constructionplans(Player player){
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Test something");
+
+        String userName = myObj.nextLine();  // Read user input
+        //System.out.println("Username is: " + userName);  // Output user input
+        WriteConstruplan(userName);
+    }
 
 
+    public void WriteConstruplan(String text){
+        try (FileWriter writer = new FileWriter("output.txt", true);
+             BufferedWriter bw = new BufferedWriter(writer);
+             PrintWriter output = new PrintWriter(bw)) {
+            output.println(text);
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
+    }
+
+    public void ReadConstruplan(Player player,Maps map){
+        Path file = Paths.get("output.txt");
+        Charset charset = Charset.forName("US-ASCII");
+        long deposit=0;
+        long bedget=0;
+        try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
+            String line;
+            ArrayList<String> list =new ArrayList<String>();
+            while ((line = reader.readLine()) != null) {
+                list.removeAll(list);
+                list.addAll(bracket(line));
+                for(int i=list.size()-1;i>=0;i--){
+                    String checktext=list.get(i);
+                    if( checktext.equals("while")){
+                        System.out.println(deposit);
+                        getWhileStatement().Todowhile(10L);
+//                        System.out.println("Wh");
+                    }else if(checktext.equals("deposit")){ //deposit
+                        int y=player.getYplayer();
+                        int x=player.getXplayer();
+                        deposit=map.getMap(x,y);
+//                        System.out.println("De");
+                    }else if(checktext.equals("budget")){
+                        System.out.println("bedget");
+                    }
+                }
+
+
+//                if ('+' == str[str.length - 1] || str[str.length - 1] == '-' || str[str.length - 1] == '*' || str[str.length - 1] == '/' || str[str.length - 1] == '%')
+//                    throw new Exception("Some of the last string's input files contain operands that cannot be calculated !!");
+//                else {
+//                    //  Writefile();
+//                }
+
+            }
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> bracket(String input){
+        String patternStr = "[{}()]";
+        Pattern pattern = Pattern.compile(patternStr);
+        Matcher matcher = pattern.matcher(input);
+
+        ArrayList<String> list = new ArrayList<String>();
+        int lastIndex = 0;
+
+        // วนลูปผ่าน match เพื่อคัดคำที่ไม่ใช่วงเล็บหรือปีกกา และเก็บใน ArrayList
+        while (matcher.find()) {
+            String word = input.substring(lastIndex, matcher.start()).trim();
+            if (!word.isEmpty()) {
+                list.add(word);
+            }
+            lastIndex = matcher.end();
+        }
+
+        // เพิ่มคำสุดท้ายลงใน ArrayList หากมี
+        String lastWord = input.substring(lastIndex).trim();
+        if (!lastWord.isEmpty()) {
+            list.add(lastWord);
+        }
+
+        return list;
 
     }
+
+
 }
