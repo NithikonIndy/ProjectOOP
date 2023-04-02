@@ -1,9 +1,6 @@
-import Expression.Expression;
-import Expression.Factor;
 import PlayerandMap.Maps;
 import PlayerandMap.Player;
 import PlayerandMap.Time;
-import Expression.Term;
 import Statement.*;
 
 import java.io.*;
@@ -27,17 +24,11 @@ public class Gamestate {
     private InfoExpression infoExpression;
     private Time time;
 
-    private Expression expression;
-
-    private Factor factor;
-
-    private Term term;
-
     private WhileStatement whileStatement;
 
     private IfStatement ifStatement;
 
-
+//
     public Gamestate(Maps map, ArrayList<Player> players) {
         this.map = map;
         this.players = players;
@@ -89,18 +80,6 @@ public class Gamestate {
 
     public Time getTime() {
         return time;
-    }
-
-    public Expression getExpression() {
-        return expression;
-    }
-
-    public Factor getFactor() {
-        return factor;
-    }
-
-    public Term getTerm() {
-        return term;
     }
 
     public IfStatement getIfStatement() {

@@ -5,6 +5,7 @@ import ConfigFile.Config;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+//
 public class Maps {
     protected long [][] players;
     protected int width =Config.n; // n=15 , columns X

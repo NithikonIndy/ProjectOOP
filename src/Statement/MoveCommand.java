@@ -5,7 +5,6 @@ import PlayerandMap.Player;
 /** act move ,  up | down | upleft | upright | downleft | downright
  */
 public class MoveCommand{
-    //ActionCommand act=new ActionCommand();
     protected int Yplayer;
     protected int Xplayer;
     protected long budgetplayer;

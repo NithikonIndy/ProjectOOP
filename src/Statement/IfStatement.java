@@ -3,9 +3,6 @@ package Statement;
 public class IfStatement {
     private boolean condition;
 
-//    public IfStatement(boolean condition){
-//        this.condition = condition;
-//    }
 
     public boolean getCondition() {
         return condition;

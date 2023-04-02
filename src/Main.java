@@ -24,8 +24,7 @@ public class Main {
            map.Showmap();
 
 
-
-
+           //
          //วางแผน
 
            while (gameState.getTime().start_intial()>0){
