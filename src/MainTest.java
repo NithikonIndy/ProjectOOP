@@ -8,6 +8,7 @@ class MainTest {
 
     @Test
     void main() {
+
         ArrayList<Player> playerList = new ArrayList<>();
         playerList.add(new Player("TT"));
         playerList.add(new Player("HH"));

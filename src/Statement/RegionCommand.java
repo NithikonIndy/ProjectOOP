@@ -48,12 +48,9 @@ public class RegionCommand {
             Xplayer=player.getXplayer();
             map.setMap(Xplayer,Yplayer,moneyinvest);
             player.getXcityplayerList().add(Xplayer);
-            player.getYcityplayerList().add(Yplayer);
-           // player.cityplayerList.add(map.getMap(Xplayer,Yplayer)); // อนาเขตplayer
+            player.getYcityplayerList().add(Yplayer);// อนาเขตplayer
             budgetplayer= player.getInit_budget();
             budgetplayer-=moneyinvest;
-//            setXplayer();
-//            setYplayer();
             setBudget(budgetplayer);
             System.out.println(player.getYcityplayerList()+""+player.getYcityplayerList());
         }

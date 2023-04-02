@@ -19,7 +19,7 @@ public class InfoExpression{
     /**
      * view for Player
      */
-
+//
     public long viewspace(Player player, Maps map) {// opponent exprssion
         Xplayer = player.getXplayer();
         Yplayer = player.getYplayer();

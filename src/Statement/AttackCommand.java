@@ -2,7 +2,7 @@ package Statement;
 
 import PlayerandMap.Maps;
 import PlayerandMap.Player;
-
+//
 /** attack player by shoot
  */
 public class AttackCommand{

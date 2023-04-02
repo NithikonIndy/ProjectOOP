@@ -4,9 +4,6 @@ package Statement;
 public class WhileStatement {
     private boolean condition;
 
-//    public WhileStatement(boolean condition) {
-//        this.condition = condition;
-//    }
 
     public boolean getCondition() {
         return condition;
