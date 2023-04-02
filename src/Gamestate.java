@@ -1,17 +1,23 @@
+import Expression.Expression;
+import Expression.Factor;
+import PlayerandMap.Maps;
 import PlayerandMap.Player;
-import PlayerandMap.Map;
-import Statement.MoveCommand;
-import Statement.ActionCommand;
-import Statement.AttackCommand;
-import Statement.RegionCommand;
-import Statement.InfoExpression;
 import PlayerandMap.Time;
+import Expression.Term;
+import Statement.*;
 
-
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Gamestate {
-    private Map map;
+    private Maps map;
     private ArrayList<Player> players;
     private Player p;
     private MoveCommand move;
@@ -21,8 +27,18 @@ public class Gamestate {
     private InfoExpression infoExpression;
     private Time time;
 
+    private Expression expression;
 
-    public Gamestate(Map map, ArrayList<Player> players) {
+    private Factor factor;
+
+    private Term term;
+
+    private WhileStatement whileStatement;
+
+    private IfStatement ifStatement;
+
+
+    public Gamestate(Maps map, ArrayList<Player> players) {
         this.map = map;
         this.players = players;
         this.move=new MoveCommand();
@@ -32,6 +48,8 @@ public class Gamestate {
         this.infoExpression=new InfoExpression();
         this.p=new Player();
         this.time=new Time();
+        this.whileStatement=new WhileStatement();
+        this.ifStatement=new IfStatement();
     }
 
     public void showlist(){
@@ -46,7 +64,7 @@ public class Gamestate {
         return p;
     }
 
-    public Map getMap() {
+    public Maps getMap() {
         return map;
     }
     public ArrayList<Player> getPlayers() {
@@ -69,12 +87,126 @@ public class Gamestate {
         return regionCommand;
     }
 
+    public Time getTime() {
+        return time;
+    }
+
+    public Expression getExpression() {
+        return expression;
+    }
+
+    public Factor getFactor() {
+        return factor;
+    }
+
+    public Term getTerm() {
+        return term;
+    }
+
+    public IfStatement getIfStatement() {
+        return ifStatement;
+    }
+
+    public WhileStatement getWhileStatement() {
+        return whileStatement;
+    }
+
     public boolean GameOver(){
         if (map.getMap(p.getXcitycenter(), p.getYcitycenter())==0){
             return true;
         }else {
             return false;
         }
+    }
+
+    public void Constructionplans(Player player){
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Test something");
+
+        String userName = myObj.nextLine();  // Read user input
+        //System.out.println("Username is: " + userName);  // Output user input
+        WriteConstruplan(userName);
+    }
+
+
+    public void WriteConstruplan(String text){
+        try (FileWriter writer = new FileWriter("output.txt", true);
+             BufferedWriter bw = new BufferedWriter(writer);
+             PrintWriter output = new PrintWriter(bw)) {
+            output.println(text);
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
+    }
+
+    public void ReadConstruplan(Player player,Maps map){
+        Path file = Paths.get("output.txt");
+        Charset charset = Charset.forName("US-ASCII");
+        long deposit=0;
+        long bedget=0;
+        try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
+            String line;
+            ArrayList<String> list =new ArrayList<String>();
+            while ((line = reader.readLine()) != null) {
+                list.removeAll(list);
+                list.addAll(bracket(line));
+                for(int i=list.size()-1;i>=0;i--){
+                    String checktext=list.get(i);
+                    if( checktext.equals("while")){
+                        System.out.println(deposit);
+                        getWhileStatement().Todowhile(10L);
+//                        System.out.println("Wh");
+                    }else if(checktext.equals("deposit")){ //deposit
+                        int y=player.getYplayer();
+                        int x=player.getXplayer();
+                        deposit=map.getMap(x,y);
+//                        System.out.println("De");
+                    }else if(checktext.equals("budget")){
+                        System.out.println("bedget");
+                    }
+                }
+
+
+//                if ('+' == str[str.length - 1] || str[str.length - 1] == '-' || str[str.length - 1] == '*' || str[str.length - 1] == '/' || str[str.length - 1] == '%')
+//                    throw new Exception("Some of the last string's input files contain operands that cannot be calculated !!");
+//                else {
+//                    //  Writefile();
+//                }
+
+            }
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> bracket(String input){
+        String patternStr = "[{}()]";
+        Pattern pattern = Pattern.compile(patternStr);
+        Matcher matcher = pattern.matcher(input);
+
+        ArrayList<String> list = new ArrayList<String>();
+        int lastIndex = 0;
+
+        // วนลูปผ่าน match เพื่อคัดคำที่ไม่ใช่วงเล็บหรือปีกกา และเก็บใน ArrayList
+        while (matcher.find()) {
+            String word = input.substring(lastIndex, matcher.start()).trim();
+            if (!word.isEmpty()) {
+                list.add(word);
+            }
+            lastIndex = matcher.end();
+        }
+
+        // เพิ่มคำสุดท้ายลงใน ArrayList หากมี
+        String lastWord = input.substring(lastIndex).trim();
+        if (!lastWord.isEmpty()) {
+            list.add(lastWord);
+        }
+
+        return list;
 
     }
+
+
 }

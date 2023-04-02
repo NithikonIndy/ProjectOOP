@@ -18,7 +18,7 @@ public class Player {
 
     protected String name;
     boolean turn;
-    int countturn=1;
+    long countturn=1;
     protected long init_budget;
     protected int Xcitycenter;
     protected int Ycitycenter;
@@ -44,6 +44,7 @@ public class Player {
         return XcityplayerList;
     }
 
+
     public String getName() {
         return name;
     }
@@ -64,7 +65,7 @@ public class Player {
         return this.Xplayer;
     }
     public int getYplayer(){ return this.Yplayer; }
-    public int getCountturn(){
+    public long getCountturn(){
         return this.countturn;
     }
 

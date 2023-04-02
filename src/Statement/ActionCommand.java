@@ -1,25 +1,25 @@
 package Statement;
 
-import PlayerandMap.Map;
+import PlayerandMap.Maps;
 import PlayerandMap.Player;
 
 /** action done or relocate
  */
-public class ActionCommand implements Command {
+public class ActionCommand {
     protected long moneycitycenter;
     protected long budgetplayer;
     protected int Xcitycenter;
     protected int Ycitycenter;
     protected int Xplayer;
     protected int Yplayer;
-    protected int countturn;
+    protected long countturn;
     protected boolean turn;
 
-    public int getCountturn() {
+    public long getCountturn() {
         return countturn;
     }
 
-    public void setCountturn(int countturn) {
+    public void setCountturn(long countturn) {
         this.countturn = countturn;
     }
 
@@ -27,7 +27,7 @@ public class ActionCommand implements Command {
         turn=player.getturn();
         countturn=player.getCountturn()+1;
         turn= true;
-        player.setCountturn(countturn);
+        player.setCountturn((int) countturn);
         player.setturn(turn);
 
 
@@ -45,7 +45,7 @@ public class ActionCommand implements Command {
     }
 
 
-    public void Relocate(Player player , Map map) {
+    public void Relocate(Player player , Maps map) {
         Xcitycenter = player.getXcitycenter();
         Ycitycenter =player.getYcitycenter();
         Xplayer=player.getXplayer();

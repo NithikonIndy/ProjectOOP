@@ -1,14 +1,15 @@
 package Statement;
 
-import PlayerandMap.Map;
+import PlayerandMap.Maps;
 import PlayerandMap.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
 /**
  * check nearby  function | opponent expression view space
  */
-public class InfoExpression implements Command {
+public class InfoExpression{
 
     protected int Xcitycenter;
     protected int Ycitycenter;
@@ -19,7 +20,7 @@ public class InfoExpression implements Command {
      * view for Player
      */
 
-    public long viewspace(Player player, Map map) {// opponent exprssion
+    public long viewspace(Player player, Maps map) {// opponent exprssion
         Xplayer = player.getXplayer();
         Yplayer = player.getYplayer();
         ArrayList<Long> index = new ArrayList<Long>();
@@ -191,7 +192,7 @@ public class InfoExpression implements Command {
     }
 
 
-    public long nearby(Player player, Map map) {
+    public long nearby(Player player, Maps map) {
         ArrayList<Long> listnearby = new ArrayList<Long>();
         Xplayer = player.getXplayer();
         Yplayer = player.getYplayer();
@@ -289,7 +290,7 @@ public class InfoExpression implements Command {
         return mincheck;
     }
 
-    public long onedirectnearby(Player player, Map map, int xposition, int yposition, int direct) {
+    public long onedirectnearby(Player player, Maps map, int xposition, int yposition, int direct) {
         long checknearby = map.getMap(xposition, yposition);
         long near = 0;
 //        System.out.println(player.YcityplayerList);
@@ -309,7 +310,7 @@ public class InfoExpression implements Command {
         return near;
     }
 
-    public long obliquenearby(Player player, Map map, int xposition, int yposition, int direct) {
+    public long obliquenearby(Player player, Maps map, int xposition, int yposition, int direct) {
         long checknearby = map.getMap(xposition, yposition);
         long near = 0;
         if ((player.getYcityplayerList().contains(yposition) && player.getXcityplayerList().contains(xposition))) {
@@ -334,6 +335,7 @@ public class InfoExpression implements Command {
         }
         return count;
     }
+
 
 //    public static void main(String[] args){
 //

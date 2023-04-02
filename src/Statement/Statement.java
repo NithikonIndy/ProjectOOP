@@ -1,5 +1,11 @@
 package Statement;
 
+import PlayerandMap.Player;
+
+import java.util.Map;
+
 public interface Statement  {
-    //boolean evaluate(Map<String, Integer> var_map, IGeneticEntity host);
+   // double evaluate(Map<String, Integer> map, Player player);
+
+    boolean evaluate(Map<String, Integer> map, Player player);
 }

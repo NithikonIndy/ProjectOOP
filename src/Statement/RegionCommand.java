@@ -1,10 +1,12 @@
 package Statement;
-import PlayerandMap.Map;
-import PlayerandMap.Player;
+
 import ConfigFile.Config;
+import PlayerandMap.Maps;
+import PlayerandMap.Player;
+
 /** invest region | collect region and Interest rates deposit of region
  */
-public class RegionCommand implements Command {
+public class RegionCommand {
     int Xplayer;
     int Yplayer;
     long budgetplayer;
@@ -38,7 +40,7 @@ public class RegionCommand implements Command {
         this.budgetplayer = budget;
     }
 
-    public void invest(long moneyinvest, Player player, Map map) {
+    public void invest(long moneyinvest, Player player, Maps map) {
         if(moneyinvest>=Config.max_dep){
            act.Done(player);
         }else {
@@ -58,7 +60,7 @@ public class RegionCommand implements Command {
         act.Done(player);
     }
 
-    public void collect(Player player,long withdraw,Map map) {
+    public void collect(Player player,long withdraw,Maps map) {
         if(map.getMap(player.getXplayer(),player.getYplayer()) < withdraw){
             act.Done(player);
         }else {
@@ -75,4 +77,5 @@ public class RegionCommand implements Command {
         }
         act.Done(player);
     }
+
 }

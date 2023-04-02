@@ -1,16 +1,15 @@
 package PlayerandMap;
+
 import ConfigFile.Config;
-/** create map m*n , random city crew ,create deposit of region
- */
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-public class Map {
+public class Maps {
     protected long [][] players;
     protected int width =Config.n; // n=15 , columns X
     protected int length=Config.m; //m=20 , rows Y
-    public Map(){
+    public Maps(){
         players = new long[length][width];
     }
     public void Randomregion (ArrayList<Player> playerList){
@@ -43,6 +42,22 @@ public class Map {
 //        p.show();
 //        System.out.println(p.YcityplayerList +""+ p.XcityplayerList);
 
+    }
+
+    public void deposoitofregion(Player player){
+        //b * log10 d * ln t.
+        long b=Config.interest_pct;
+        long t=player.getCountturn();
+        int loop = player.XcityplayerList.size();
+        int intialloop=0;
+        while (intialloop<loop){
+            int listX=player.XcityplayerList.get(intialloop);
+            int listY=player.YcityplayerList.get(intialloop);
+            long d=getMap(listX,listY);
+            long increase= (long) (b * (Math.log10(d)) * Math.log(t));
+            long totalincrease=d+increase;
+            setMap(listX,listY,totalincrease);
+        }
     }
 
 

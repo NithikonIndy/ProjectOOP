@@ -3,6 +3,7 @@ package PlayerandMap;
 
 import ConfigFile.Config;
 
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Time {
@@ -16,9 +17,11 @@ public class Time {
     public int MinToSec(int time){
         return time*60;
     }
-    public void start_intial() {
+    public int  start_intial() {
         this.running = true;
-        this.time=MinToSec(Config.init_plan_min);
+       // this.time=MinToSec(Config.init_plan_min);
+        this.time=5;
+        AtomicInteger t= new AtomicInteger();
         this.thread = new Thread(() -> {
             while (this.time > 0) {
                 try {
@@ -27,11 +30,13 @@ public class Time {
                     e.printStackTrace();
                 }
                 this.time--;
+                t.set(time);
                 System.out.println(this.time);
             }
             this.running = false;
         });
         this.thread.start();
+        return t.get();
     }
 
     public void start_plan() {
